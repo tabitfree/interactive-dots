@@ -19,7 +19,8 @@ class Dot {
 	}
 
 	setSize(newSize) {
-		this._size = newSize;		
+		let curSize = this._size;
+		this._size = lerp(curSize, newSize, .05);		
 	}
 
 	getColor() {

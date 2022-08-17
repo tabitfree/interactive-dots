@@ -6,4 +6,20 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
+	cursor: none;
+}
+
+#canvas {
+	position: relative;
+}
+
+#canvas h1 {
+	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	position: absolute;
+	font-size: 100px;
+	z-index: 9999;
+	color: #0000FF;
+	bottom: 20px;
+	right: 20px;
+	user-select: none;
 }

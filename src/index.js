@@ -1,17 +1,21 @@
+const title = document.querySelector('h1');
 let dots;
 let mouseRadius = 150;
 let dotBasicSize = 40;
 let dotBiggerSize = 60;
 let dotCurSize = dotBasicSize;
+let backgroundColor;
+let mouseColor = {r: 0, g: 0, b: 255};
 
-let rows, cols
+
+let rows, cols;
 let gapBetweenCircles = 80;
 
-
-
 function setup() {
-	createCanvas(windowWidth, windowHeight);
-	console.log(windowWidth, windowHeight);
+	let cnv = createCanvas(windowWidth, windowHeight);
+	cnv.parent('canvas');
+
+	backgroundColor = '#000';
 
 	rows = floor(windowHeight / ((dotCurSize/2) + gapBetweenCircles));
 	cols = floor(windowWidth / ((dotCurSize/2) + gapBetweenCircles));
@@ -20,10 +24,12 @@ function setup() {
 }
 
 function draw() {
-	background('#000');
+	background(backgroundColor);
 	noStroke();
-	fill('#fff')
+	fill(mouseColor.r, mouseColor.g, mouseColor.b);
+	circle(mouseX, mouseY, mouseRadius);
 
+	fill('#fff')
 	drawDots();
 }
 
@@ -80,6 +86,13 @@ function isColliding(x1, y1, r1, x2, y2, r2) {
 }
 
 function mousePressed() {
+	backgroundColor = floor(random(255));
+	mouseColor = {
+		r: floor(random(255)),
+		g: floor(random(255)),
+		b: floor(random(255))
+	}
+	title.style.color = `rgba(${mouseColor.r}, ${mouseColor.g}, ${mouseColor.b}, ${random(.4, 1)})`;
 	let r = floor(random(255));
 	let g = floor(random(255));
 	let b = floor(random(255));
